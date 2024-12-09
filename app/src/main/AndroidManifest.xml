@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FinalProjectApp"
+        tools:targetApi="31">
+
+        <!-- Login Screen -->
+        <activity
+            android:name=".LoginScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Manager Home Screen -->
+        <activity
+            android:name=".ManagerHomeScreen"
+            android:exported="true" />
+
+        <!-- Salesperson Home Screen -->
+        <activity
+            android:name=".SalespersonHomeScreen"
+            android:exported="true" />
+
+        <!-- Salesperson Search Screen -->
+        <activity
+            android:name=".SalespersonSearchScreen"
+            android:exported="true" />
+
+        <!-- Customer Service Home Screen -->
+        <activity
+            android:name=".CustomerServiceHomeScreen"
+            android:exported="true" />
+
+        <!-- Manager Create Listing Screen -->
+        <activity
+            android:name=".ManagerCreateListingScreen"
+            android:exported="true" />
+
+        <!-- Manager Add Distributor Screen -->
+        <activity
+            android:name=".ManagerAddDistributorScreen"
+            android:exported="true" />
+
+        <!-- Manager Search Screen -->
+        <activity
+            android:name=".ManagerSearchScreen"
+            android:exported="true" />
+
+        <!-- Customer Service Log Return Screen -->
+        <activity
+            android:name=".CustomerServiceLogReturnScreen"
+            android:exported="true" />
+
+        <!-- Customer Service Search Screen -->
+        <activity
+            android:name=".CustomerServiceSearchScreen"
+            android:exported="true" />
+
+        <!-- Customer Service View Returns Screen -->
+        <activity
+            android:name=".CustomerServiceViewReturnsScreen"
+            android:exported="true" />
+
+    </application>
+
+</manifest>
