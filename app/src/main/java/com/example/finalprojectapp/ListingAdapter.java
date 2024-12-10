@@ -58,8 +58,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ListingV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListingViewHolder holder, int position)
-    {
+    public void onBindViewHolder(@NonNull ListingViewHolder holder, int position) {
         Listing listing = listings.get(position);
 
         // Bind common fields
@@ -68,51 +67,46 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ListingV
         holder.tvDate.setText("Date: " + listing.getDatePurchased());
 
         // Bind Manager-specific fields
-        if (holder.tvPrice != null)
-        {
+        if (holder.tvPrice != null) {
             holder.tvPrice.setText("Price: $" + listing.getPrice());
         }
-        if (holder.tvProfit != null)
-        {
+        if (holder.tvProfit != null) {
             double profit = listing.getProfit();
             holder.tvProfit.setText(String.format("Profit: $%.2f", profit));
 
             // Set profit text color based on value
-            if (profit >= 0)
-            {
+            if (profit >= 0) {
                 holder.tvProfit.setTextColor(context.getResources().getColor(android.R.color.holo_green_dark)); // Green for positive profit
-            }
-            else
-            {
+            } else {
                 holder.tvProfit.setTextColor(context.getResources().getColor(android.R.color.holo_red_dark)); // Red for negative profit
             }
         }
-        if (holder.tvPallets != null)
-        {
+        if (holder.tvPallets != null) {
             holder.tvPallets.setText(listing.getNumPallets() + " pallets");
         }
-        if (holder.tvDamaged != null)
-        {
+        if (holder.tvDamaged != null) {
             holder.tvDamaged.setText("Damaged: " + listing.getDamagedCount());
         }
-        if (holder.tvEarnings != null)
-        {
+        if (holder.tvEarnings != null) {
             holder.tvEarnings.setText("Earnings: $" + listing.getEarnings());
         }
-        if (holder.tvPay != null)
-        {
+        if (holder.tvPay != null) {
             holder.tvPay.setText(String.format("Pay: $%.2f", listing.getEarnings() * 0.1));
         }
 
+        // NEW: Update Total Sales field
+        if (holder.tvTotalSales != null) {
+            holder.tvTotalSales.setText(String.format("Total Sales: $%.2f", listing.getEarnings()));
+        }
+
         // Set click listener for the item
-        holder.itemView.setOnClickListener(v ->
-        {
-            if (onItemClickListener != null)
-            {
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(listing);
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -125,16 +119,17 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ListingV
         notifyDataSetChanged();
     }
 
-    static class ListingViewHolder extends RecyclerView.ViewHolder
-    {
+    static class ListingViewHolder extends RecyclerView.ViewHolder {
         // Common views
         TextView tvId, tvDistributor, tvDate;
 
         // Manager-specific views
         TextView tvPrice, tvProfit, tvPallets, tvDamaged, tvEarnings, tvPay;
 
-        public ListingViewHolder(@NonNull View itemView)
-        {
+        // Salesperson-specific views
+        TextView tvTotalSales;
+
+        public ListingViewHolder(@NonNull View itemView) {
             super(itemView);
 
             // Common views
@@ -149,6 +144,9 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ListingV
             tvDamaged = itemView.findViewById(R.id.tv_damaged);
             tvEarnings = itemView.findViewById(R.id.tv_earnings);
             tvPay = itemView.findViewById(R.id.tv_pay);
+
+            // Salesperson-specific views
+            tvTotalSales = itemView.findViewById(R.id.tv_total_sales);
         }
     }
 }

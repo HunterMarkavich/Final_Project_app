@@ -25,10 +25,10 @@
         android:id="@+id/tv_total_sales"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Sales: $1000"
+        android:text="Total Sales: 9999"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
